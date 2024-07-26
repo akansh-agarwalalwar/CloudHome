@@ -1,0 +1,124 @@
+.otp-page-container {
+    display: inline-flex;
+    flex-direction: column;
+    margin: 24px;
+    padding: 58px 52px 47px 52px;
+    background-color: #F5F2EB;
+    gap: 24px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+
+    .btn-caontainer {
+        display: flex;
+        gap: 8px;
+
+
+        .verifybtn {
+            display: flex;
+            width: 105px;
+            height: 40px;
+            padding: 16px 30px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            background: #AED6B3;
+            border: none;
+
+
+            p {
+                color: #FFF;
+                text-align: center;
+                font-family: "Degular Display Demo";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: 0.9px;
+            }
+
+
+        }
+
+        .verifybtn-2 {
+            display: flex;
+            width: 105px;
+            height: 40px;
+            padding: 16px 30px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 8px;
+            border-color: #AED6B3;
+
+            p {
+                color: #AED6B3;
+                text-align: center;
+                font-family: "Degular Display Demo";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                letter-spacing: 0.9px;
+            }
+
+
+        }
+
+    }
+
+
+}
+
+.otp-caontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    ;
+}
+
+.otp-input-container {
+    position: relative;
+    margin-left: 70px;
+
+    input {
+        padding: 8px;
+        font-size: 24px;
+        letter-spacing: 48px;
+        width: 280px !important;
+        border: none;
+        outline: none;
+    }
+
+    .otp-column {
+        position: absolute;
+        top: 0;
+
+        height: 44px;
+        width: 24px;
+        background-color: #F5F2EB;
+    }
+
+    .c1 {
+        left: 35px;
+    }
+
+    .c2 {
+        left: 94px;
+    }
+
+    .c3 {
+        left: 155px;
+    }
+
+    .c4 {
+        left: 215px;
+        width: 70px;
+    }
+}
+
+.main {
+
+}
