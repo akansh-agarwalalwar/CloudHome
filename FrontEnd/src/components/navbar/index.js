@@ -5,20 +5,17 @@ import { BiSolidServer } from "react-icons/bi";
 import DroupDown from "./droupdown";
 
 const Navbar = () => {
-
-
   return (
-    <div className="navbar-caontainer">
-      <div className="SolidStore">
-        <BiSolidServer size={22.75} />
-        <p>Storage</p>
+    <div className="navbar-container">
+      <div className="logo-container">
+        <BiSolidServer size={24} />
+        <p className="logo-text">Storage</p>
       </div>
-      <input type="text" placeholder="Search here..." />
+      <input className="search-input" type="text" placeholder="Search here..." />
       <div className="profile-container">
-        <p>Rohit Kumar</p>
-        
-        <div className="profile">
-        <DroupDown />
+        <p className="profile-name">Akansh Agarwal</p>
+        <div className="profile-dropdown">
+          <DroupDown />
         </div>
       </div>
     </div>

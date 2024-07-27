@@ -8,7 +8,6 @@ import OtpPage from "./src/pages/otpPage";
 
 const AppRouter = () => {
     const { isAuthorized, isEmailVerified } = useSelector((e) => e.auth);
-
     const router = createBrowserRouter([
         {
             path: "/login",
@@ -19,19 +18,14 @@ const AppRouter = () => {
             element: isAuthorized ? <Navigate to="/" /> : <SignupPage />,
         },
         {
-            path: "/otp",
-            element: isAuthorized && !isEmailVerified ? <OtpPage /> : <Navigate to="/" />,
-        },
-        {
             path: "/",
             element: isAuthorized ? (
-                <>{isEmailVerified ? <HomePage /> : <Navigate to="/otp" />}</>
+                <>{isAuthorized ? <HomePage /> : <Navigate to="/" />}</>
             ) : (
                 <Navigate to="/login" />
             ),
         },
     ]);
-
     return <RouterProvider router={router} />;
 };
 

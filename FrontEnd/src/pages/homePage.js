@@ -4,6 +4,7 @@ import useCreateFolder from "../hooks/useCreateFolder";
 import useGetFileFolders from "../hooks/useGetFileFolders";
 import useUploadFile from "../hooks/useUploadFile";
 import LeftSideNavBar from "../components/leftsidenavbar";
+import './HomePage.css';
 
 const HomePage = () => {
   const [newFolder, setNewFolder] = useState("");
@@ -18,11 +19,11 @@ const HomePage = () => {
   const parentFolder = folderStructure[folderStructure.length - 1];
 
   const handleDoubleClick = (elem) => {
-    if (elem.type == "folder") {
+    if (elem.type === "folder") {
       setFolderStructure([...folderStructure, elem]);
-  } else {
+    } else {
       window.open(elem.link);
-  }
+    }
   };
 
   const handleAllowCreateFolder = () => {
@@ -34,6 +35,7 @@ const HomePage = () => {
       await createFolder({ name: newFolder, parentId: parentFolder._id });
       getFileFolders(parentFolder._id);
       setShowCreateFolder(false);
+      setNewFolder(""); 
     }
   };
 
@@ -52,74 +54,75 @@ const HomePage = () => {
   const handleFileUpload = async (e) => {
     if (isUploadAllowed) {
       const file = e.target.files;
-      await uploadFile({
-        file: file[0],
-        parentId: parentFolder._id,
-      });
-      getFileFolders(parentFolder._id);
+      if (file.length > 0) {
+        await uploadFile({
+          file: file[0],
+          parentId: parentFolder._id,
+        });
+        getFileFolders(parentFolder._id);
+        e.target.value = ""; // Clear input after file upload
+      }
     } else {
       alert("Uploading is already in progress. Please wait...");
     }
   };
 
   return (
-    <div className="main">
+    <div className="homepage-container">
       <LeftSideNavBar />
       <Navbar />
       <div className="homepage-main-container">
-        <button onClick={handleAllowCreateFolder}>Create Folder</button>
+        <button className="create-folder-button" onClick={handleAllowCreateFolder}>
+          Create Folder
+        </button>
         <input
           className="file-upload-input"
           ref={inputRef}
           type="file"
           onChange={handleFileUpload}
+          aria-label="Upload file"
         />
-        <ul style={{ display: "flex", padding: "24px", gap: "24px" }}>
-          {folderStructure.flatMap((elem, indx) => {
-            if (elem.name)
-              return <li onClick={() => handleBackClick(indx)}>{elem.name}</li>;
-            else return null;
-          })}
-        </ul>
-        <div>
-          {showCreateFolder && (
-            <div
-              style={{
-                margin: "24px",
-                padding: "24px",
-                backgroundColor: "yellow",
-              }}
+        <ul className="breadcrumb">
+          {folderStructure.map((elem, indx) => (
+            <li
+              key={elem._id || indx}
+              onClick={() => handleBackClick(indx)}
+              className="breadcrumb-item"
             >
-              <input
-                value={newFolder}
-                onChange={(e) => setNewFolder(e.target.value)}
-              />
-              <button onClick={handleCreateFolder}>Create</button>
-              <button onClick={() => setShowCreateFolder(false)}>Cancel</button>
+              {elem.name}
+            </li>
+          ))}
+        </ul>
+        {showCreateFolder && (
+          <div className="create-folder-form">
+            <input
+              className="new-folder-input"
+              value={newFolder}
+              onChange={(e) => setNewFolder(e.target.value)}
+              placeholder="Enter folder name"
+            />
+            <button className="create-button" onClick={handleCreateFolder}>
+              Create
+            </button>
+            <button className="cancel-button" onClick={() => setShowCreateFolder(false)}>
+              Cancel
+            </button>
+          </div>
+        )}
+        <div className="file-folder-container">
+          {fileFolders.map((elem) => (
+            <div
+              key={elem._id}
+              className={`file-folder-item ${elem.type === "folder" ? "folder" : "file"}`}
+              onDoubleClick={() => handleDoubleClick(elem)}
+            >
+              <p>{elem.name}</p>
             </div>
-          )}
-        </div>
-        <div>
-          {fileFolders.map((elem) => {
-            return (
-              <div
-                style={{
-                  backgroundColor: elem.type === "folder" ? "yellow" : "orange",
-                  border: "1px solid grey",
-                  borderRadius: "8px",
-                  width: "fit-content",
-                  padding: "8px 16px",
-                  margin: "8px 16px",
-                }}
-                onDoubleClick={() => handleDoubleClick(elem)}
-              >
-                <p>{elem.name}</p>
-              </div>
-            );
-          })}
+          ))}
         </div>
       </div>
     </div>
   );
 };
+
 export default HomePage;

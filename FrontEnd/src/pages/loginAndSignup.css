@@ -1,3 +1,20 @@
+.website-promotion{
+    display: flex;
+    gap: 2px;
+    top:0;
+    position: absolute;
+    right: 10;
+    margin: 30px;
+    align-items: center;
+}
+.game-mode{
+    font-size: medium;
+}
+.game-mode-button{
+    background-color: cadetblue;
+    padding: 10px;
+    border-radius: 20px;
+}
 .login-container {
     display: flex;
     justify-content: center;
@@ -11,10 +28,10 @@
         justify-content: center;
         align-items: center;
         border-radius: 30px;
-        background: #F5F2EB;
+        background: #8ccfe2;
         width: 480px;
         height: 620px;
-
+        margin-left: 15px;
         .content {
             display: flex;
             flex-direction: column;
@@ -145,7 +162,7 @@
                 align-items: center;
                 gap: 10px;
                 border-radius: 8px;
-                background: #AED6B3;
+                background: #c0e777;
                 border: none;
 
                 .login-text {

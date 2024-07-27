@@ -1,7 +1,6 @@
 import { useState } from "react";
 import useSignup from "../hooks/useSignup";
 import "./loginAndSignup.css";
-import logo from "../Assets/image.png";
 import { NavLink } from "react-router-dom";
 import { FaApple } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
@@ -29,9 +28,6 @@ const SignupPage = () => {
         <div className="content">
           <div className="sigin-para">
             <p className="signin-para-text">Sign Up</p>
-            <p className="signin-para-text-2">
-              Hey, Enter Email and Password to create an account
-            </p>
           </div>
           <input
             className="input-field "
@@ -89,8 +85,6 @@ const SignupPage = () => {
           </div>
         </div>
       </div>
-
-      <img className="logo" src={logo} />
     </div>
   );
 };
