@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const uri =
-  // "mongodb+srv://<username>:<password>@myatlasclusteredu.cnvw2mx.mongodb.net/<dbName>?retryWrites=true&w=majority&appName=myAtlasClusterEDU";
-  "mongodb+srv://<username>:<password>@cluster0.1s9b5bi.mongodb.net/<dbName>?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://<username>:<password>@myatlasclusteredu.cnvw2mx.mongodb.net/<dbName>?retryWrites=true&w=majority&appName=myAtlasClusterEDU";
+  // "mongodb+srv://<username>:<password>@cluster0.1s9b5bi.mongodb.net/<dbName>?retryWrites=true&w=majority&appName=Cluster0";
 
 let dbURL = uri.replace("<username>", process.env.DB_USERNAME);
 dbURL = dbURL.replace("<password>", process.env.DB_PASSWORD);
